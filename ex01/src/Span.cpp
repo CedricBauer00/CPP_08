@@ -82,10 +82,14 @@ unsigned int    Span::longestSpan() const
 {
     if ( this->span.size() < 2 )
         throw( SpanInvalidException() );
-    std::vector<const_iterator min> = std::min_element( this->span );
-    std::vector<const_iterator max> = std::max_element( this->span );
+    std::vector<int>::const_iterator min = std::min_element( this->span.begin(), this->span.end() );
+    std::vector<int>::const_iterator max = std::max_element( this->span.begin(), this->span.end() );
 
-    dist = *max - *min;
+    unsigned int dist;
+    dist  = static_cast<unsigned int>( *max - *min );
+
+    std::cout << ORANGE << "Longest Span found: " << dist << RESET << std::endl;
+
     return dist;
 }
 
@@ -93,5 +97,22 @@ unsigned int    Span::shortestSpan() const
 {
     if ( this->span.size() < 2 )
         throw( SpanInvalidException() );
+    
+    std::vector<int> copy;
+    
+    copy = this->span;
+    
+    std::sort( copy.begin(), copy.end() );
 
+    unsigned minSpan = std::numeric_limits<unsigned int>::max();
+
+    for ( size_t i = 1; i < copy.size(); ++i )
+    {
+        unsigned int diff = static_cast<unsigned int>( copy[i] - copy[i - 1] );
+        if ( diff < minSpan )
+            minSpan = diff;
+    } 
+
+    std::cout << ORANGE << "Shortest Span found: " << minSpan << RESET << std::endl;
+    return minSpan;
 }
