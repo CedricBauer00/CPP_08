@@ -3,18 +3,18 @@
 #include <exception>
 #include <iostream>
 #include <string>
+#include <vector>
 
-#define RED = "\033[31m";
-#define RESET = "\033[0m";
-#define ORANGE = "\033[38;2;255;120;0m"; // \x1b[38;2;255;120;0m aber keine ahnung ob \x1b??
-
-template<typename T>
+#define RED  "\033[31m"
+#define GREEN  "\033[32m"
+#define RESET  "\033[0m"
+#define ORANGE  "\033[38;2;255;120;0m" // \x1b[38;2;255;120;0m aber keine ahnung ob \x1b??
 
 class Span
 {
     private:
-        T* span;
-        const unsigned int _N;
+        std::vector<int> span;
+        unsigned int _N;
     public:
         Span();
         Span( const unsigned int N );
@@ -22,7 +22,8 @@ class Span
         Span& operator=( const Span& copy );
         ~Span();
         
-        Span& addNumber(); // still exception class to implement
+        unsigned int getLength();
+        void addNumber( unsigned int number ); // still exception class to implement
         Span& shortestSpan(); // shortest distance between numbers stored
         Span& longestSpan(); // longest distance between numbers stored
         Span& addMultipleNumbers( int howMany ); // calls addNumber howMany times often
