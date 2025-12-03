@@ -16,11 +16,18 @@
 
 int main()
 {
-    Span sp(5);
-    std::cout << "leght of 'sp' : " << sp.getLength() << std::endl;
-    sp.addNumber( 4 );
-    std::cout << "leght of 'sp' : " << sp.getLength() << std::endl;
-
+    Span sp( 3 );
+    try
+    {
+        sp.addNumber( 4 );
+        sp.addNumber( 10 );
+        sp.addNumber( 2 );
+        sp.addNumber( 1 );
+    }
+    catch( Span::AlreadyFullException &e )
+    {
+        std::cout << ELEC_RED << e.what() << RESET <<  std::endl;
+    }
     return 0;
 }
 

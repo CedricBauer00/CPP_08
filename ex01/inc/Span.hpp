@@ -4,8 +4,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <limits>
 
 #define RED  "\033[31m"
+#define ELEC_RED "\033[38;2;255;20;20m"
+#define BLUE    "\033[34m"
 #define GREEN  "\033[32m"
 #define RESET  "\033[0m"
 #define ORANGE  "\033[38;2;255;120;0m" // \x1b[38;2;255;120;0m aber keine ahnung ob \x1b??
@@ -13,8 +17,9 @@
 class Span
 {
     private:
+        unsigned int _N;    
         std::vector<int> span;
-        unsigned int _N;
+
     public:
         Span();
         Span( const unsigned int N );
@@ -22,11 +27,15 @@ class Span
         Span& operator=( const Span& copy );
         ~Span();
         
-        unsigned int getLength();
+        unsigned int getTotalLength();
+        unsigned int getCurrentLength();
+        const std::vector<int>& getSpan();
         void addNumber( unsigned int number ); // still exception class to implement
-        Span& shortestSpan(); // shortest distance between numbers stored
-        Span& longestSpan(); // longest distance between numbers stored
-        Span& addMultipleNumbers( int howMany ); // calls addNumber howMany times often
+        unsigned int shortestSpan(); // shortest distance between numbers stored
+        unsigned int longestSpan(); // longest distance between numbers stored
+        
+        template<typename B, typename E>
+        void addMultipleNumbers( B begin, E end ); // B = begin des neuen containers, E = end
         // falls !N oder N == 1 throw() exception
         // 2 exceptions fuer N elemnts already stored exception - AlreadyFullException()
         // fuer N == 0 oder N == 1 - SpanInvalidException()
@@ -34,15 +43,16 @@ class Span
         class AlreadyFullException : public std::exception
         {
             public:
-                virtual const char* what() const throw() { return "REDSpan is already full!RESET"; };
+                virtual const char* what() const throw() { return "Span is already full!"; };
         };
 
         class SpanInvalidException : public std::exception
         {
             public:
-                virtual const char* what() const throw() { return "REDSpan is not valid!RESET"; };
+                virtual const char* what() const throw() { return "Span is not valid!"; };
         };
 };
 
 // fill your span with range of iterators??
 // study containers - some member functions take a range of iterators to add a sequence of elements to the container
+// End iterator zeigt auf position HINTER dem letzten Element
