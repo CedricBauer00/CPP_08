@@ -16,13 +16,21 @@
 
 int main()
 {
-    Span sp( 3 );
     try
     {
+        Span sp;
+        Span sp1( 3 );
+        std::vector<int> v;
+        v.push_back(8);
+        v.push_back(2);
+        v.push_back(42);
+        v.push_back(66);
+        v.push_back(3);
         sp.addNumber( 4 );
         sp.addNumber( 10 );
         sp.addNumber( 2 );
-        sp.addNumber( 1 );
+        sp.addMultipleNumbers( v.begin(), v.end() );
+        std::cout << sp << std::endl;
     }
     catch( Span::AlreadyFullException &e )
     {

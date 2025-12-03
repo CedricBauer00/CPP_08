@@ -32,22 +32,39 @@ Span::~Span()
     std::cout << RED << "Span destrucotr called!" << RESET << std::endl;
 }
 
-unsigned int    Span::getTotalLength()
+unsigned int    Span::getTotalLength() const
 {
     return this->_N;
 }
 
-unsigned int    Span::getCurrentLength()
+unsigned int    Span::getCurrentLength() const
 {
     return static_cast<unsigned int>(this->span.size());   
 }
 
-const std::vector<int>& Span::getSpan()
+const std::vector<int>& Span::getSpan() const
 {
     return this->span;
 }
 
-void    Span::addNumber( unsigned int number )
+std::ostream& operator<<( std::ostream& os, const Span& span )
+{
+    const std::vector<int>& v = span.getSpan();
+    
+    os << "[";
+    
+    for ( size_t i = 0; i < v.size(); ++i )
+    {
+        os << v[i];
+        if ( i < v.size() - 1 )
+            os << ", ";
+    }
+    os << " ]";
+
+    return os;
+}
+
+void    Span::addNumber( int number )
 {
     if ( this->span.size() >= this->_N )
         throw AlreadyFullException();
@@ -61,27 +78,20 @@ void    Span::addNumber( unsigned int number )
     return ;
 }
 
-void    Span::addMultipleNumbers( B begin, E end )
+unsigned int    Span::longestSpan() const
 {
-    // setzt ganze anderen Container (list, vector, array, ...) in span ein
-    // vorher zahlen wieviel, damit einnal speicher allokiert werden kann, nicht fuer jede loop einmal
-    // dann schauen ob momentaner current_szie + neue_size <= _N, dann transfer
-    // if ( currentSize + dist <= _N )
-        // ... .insert();
-}   
+    if ( this->span.size() < 2 )
+        throw( SpanInvalidException() );
+    std::vector<const_iterator min> = std::min_element( this->span );
+    std::vector<const_iterator max> = std::max_element( this->span );
 
-// unsigned int    Span::getTotalLength()
-// {
-//     return this->_N;
-// }
+    dist = *max - *min;
+    return dist;
+}
 
-// unsigned int    Span::getCurrentLenght()
-// {
-//     return static_cast<unsigned int>(this->span.size());   
-// }
+unsigned int    Span::shortestSpan() const
+{
+    if ( this->span.size() < 2 )
+        throw( SpanInvalidException() );
 
-// std::vector<int> Span::getSpan()
-// {
-//     return this->span;
-// }
-
+}

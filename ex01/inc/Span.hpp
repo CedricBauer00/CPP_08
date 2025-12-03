@@ -27,15 +27,27 @@ class Span
         Span& operator=( const Span& copy );
         ~Span();
         
-        unsigned int getTotalLength();
-        unsigned int getCurrentLength();
-        const std::vector<int>& getSpan();
-        void addNumber( unsigned int number ); // still exception class to implement
-        unsigned int shortestSpan(); // shortest distance between numbers stored
-        unsigned int longestSpan(); // longest distance between numbers stored
+        unsigned int getTotalLength() const;
+        unsigned int getCurrentLength() const;
+        const std::vector<int>& getSpan() const;
+        void addNumber( int number ); // still exception class to implement
+        unsigned int shortestSpan() const; // shortest distance between numbers stored
+        unsigned int longestSpan() const; // longest distance between numbers stored
         
-        template<typename B, typename E>
-        void addMultipleNumbers( B begin, E end ); // B = begin des neuen containers, E = end
+        template<typename It>
+        void addMultipleNumbers( It begin, It end ) // B = begin des neuen containers, E = end
+        {
+            unsigned int dist;
+
+            dist = std::distance( begin, end ); // vorher zahlen wieviel, damit einnal speicher allokiert werden kann, nicht fuer jede loop einmal
+            
+            if ( this->span.size() + dist > this->_N ) // ob addierte menge _N ueberschreitet
+                throw AlreadyFullException();
+
+            this->span.insert( this->span.end(), begin, end );
+
+            std::cout << GREEN << "Added range of " << dist << " numbers!" << RESET << std::endl;
+        }
         // falls !N oder N == 1 throw() exception
         // 2 exceptions fuer N elemnts already stored exception - AlreadyFullException()
         // fuer N == 0 oder N == 1 - SpanInvalidException()
@@ -43,15 +55,17 @@ class Span
         class AlreadyFullException : public std::exception
         {
             public:
-                virtual const char* what() const throw() { return "Span is already full!"; };
+                virtual const char* what() const throw() { return ELEC_RED "Span is already full!" RESET; };
         };
 
         class SpanInvalidException : public std::exception
         {
             public:
-                virtual const char* what() const throw() { return "Span is not valid!"; };
+                virtual const char* what() const throw() { return ELEC_RED "Span is not valid!" RESET; };
         };
 };
+
+std::ostream& operator<<( std::ostream& os, const Span& span );
 
 // fill your span with range of iterators??
 // study containers - some member functions take a range of iterators to add a sequence of elements to the container
