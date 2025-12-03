@@ -8,9 +8,12 @@
 #define RESET = "\033[0m";
 #define ORANGE = "\033[38;2;255;120;0m"; // \x1b[38;2;255;120;0m aber keine ahnung ob \x1b??
 
+template<typename T>
+
 class Span
 {
     private:
+        T* span;
         const unsigned int _N;
     public:
         Span();
