@@ -7,11 +7,17 @@
 #include <algorithm>
 #include <list>
 #include <set>
+#include <deque>
+
+#define BLUE  "\e[38;5;75m"
+#define GREEN   "\e[32m"
+#define RESET   "\e[0m"
+
 
 class NotFoundException : public std::exception
 {
     public:
-        const char *what() const throw() { return "Value not found!"; }
+        virtual const char *what() const throw() { return "Value not found!"; }
 } ;
 
 template <typename A, typename B>
@@ -34,9 +40,13 @@ template <typename T>
 
 typename enable_if<is_same<typename T::value_type, int>::value, typename T::value_type>::type easyfind( const T &a, const int i )
 {
-    typename T::const_iterator it =  find(a.begin(), a.end(), i); //iterator wegen lists oder sets // iterator kein Index
+    typename T::const_iterator it =  std::find(a.begin(), a.end(), i); //iterator wegen lists oder sets // iterator kein Index
     if ( it != a.end() )
-        return i;
+    {
+        std::size_t index = static_cast<std::size_t>(std::distance(a.begin(), it));
+        return index; // oder it
+    }
+
     throw ( NotFoundException() );
 }
 
@@ -56,3 +66,4 @@ typename enable_if<is_same<typename T::value_type, int>::value, typename T::valu
 // std::array<int, 10> a; //array mit 10 ints
 // std::list<int> l; //verkettete liste von ints
 // std::set<int> s; // Menge an ints
+
