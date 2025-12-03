@@ -16,6 +16,7 @@ class Span
         Span& addNumber(); // still exception class to implement
         Span& shortestSpan(); // shortest distance between numbers stored
         Span& longestSpan(); // longest distance between numbers stored
+        Span& addMultipleNumbers( int howMany ); // calls addNumber howMany times often
         // falls !N oder N == 1 throw() exception
         // 2 exceptions fuer N elemnts already stored exception - AlreadyFullException()
         // fuer N == 0 oder N == 1 - SpanInvalidException()
