@@ -1,6 +1,12 @@
 #pragma once
 
 #include <exception>
+#include <iostream>
+#include <string>
+
+#define RED = "\033[31m";
+#define RESET = "\033[0m";
+#define ORANGE = "\033[38;2;255;120;0m"; // \x1b[38;2;255;120;0m aber keine ahnung ob \x1b??
 
 class Span
 {
@@ -8,7 +14,7 @@ class Span
         const unsigned int _N;
     public:
         Span();
-        Span( const unsinged int N );
+        Span( const unsigned int N );
         Span ( const Span& copy );
         Span& operator=( const Span& copy );
         ~Span();
@@ -24,14 +30,14 @@ class Span
         class AlreadyFullException : public std::exception
         {
             public:
-                const char* what();
-        }
+                virtual const char* what() const throw() { return "REDSpan is already full!RESET"; };
+        };
 
         class SpanInvalidException : public std::exception
         {
             public:
-                const char* what();
-        }
+                virtual const char* what() const throw() { return "REDSpan is not valid!RESET"; };
+        };
 };
 
 // fill your span with range of iterators??
