@@ -24,7 +24,7 @@ class NotFoundException : public std::exception
         NotFoundException& operator=( const NotFoundException& copy ) throw() { (void)copy; return *this; }
         virtual ~NotFoundException() throw() {}
         virtual const char *what() const throw() { return "Value not found!"; }
-} ;
+};
 
 template <typename A, typename B>
 struct is_same {

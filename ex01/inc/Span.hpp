@@ -6,6 +6,8 @@
 #include <vector>
 #include <algorithm>
 #include <limits>
+#include <list>
+#include <deque>
 
 #define RED  "\033[31m"
 #define ELEC_RED "\033[38;2;255;20;20m"

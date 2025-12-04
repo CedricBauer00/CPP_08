@@ -1,12 +1,10 @@
 #include "../inc/easyfind.hpp"
-// #include <iostrea>
 
 int main()
 {
     try
     {
-        std::cout << "==========Vector test==========" << std::endl;
-        // int array[5] = {1, 2, 3, 4 ,5};       
+        std::cout << "==========Vector test==========" << std::endl; 
         std::vector<int> v;
         v.push_back(10);
         v.push_back(20);
@@ -35,7 +33,8 @@ int main()
     try
     {
         std::cout << "\n==========Set test==========" << std::endl;
-        std::set<int> s;
+        std::set<int> s;        std::cout << "Search 22: " << easyfind(s, 22) << std::endl;
+
         s.insert(22);
         s.insert(13);
         s.insert(9);
@@ -49,12 +48,10 @@ int main()
     try
     {
         std::cout << "\n==========Deque test==========" << std::endl;
-        std::deque<int> d(5);
+        std::deque<int> d;
         std::cout << "(Sizeof deque : " << d.size() << ")\n(second index value : " << d[1] << ")\n" << std::endl;
-        d = {1, 2, 3, 4, 5};
         d.push_back(20);
         d.push_back(6);
-        // std::cout << "Search 3: " << easyfind(array, 3) << std::endl;
         std::cout << GREEN << "Search 6: " << BLUE << "at index " << easyfind(d, 6) << RESET << std::endl;
     }
     catch( NotFoundException &e )
@@ -84,3 +81,4 @@ int main()
 }
 
 // Substitution Failure Is Not An Error
+// deque datatype

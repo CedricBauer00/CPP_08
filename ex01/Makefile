@@ -6,7 +6,7 @@ SRC = src/main.cpp \
 OBJ := $(SRC:%.cpp=%.o)
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++11 -Iinc
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Iinc
 
 all: $(NAME)
 
