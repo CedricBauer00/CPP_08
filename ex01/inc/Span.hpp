@@ -75,8 +75,7 @@ class Span
                 {
                     if ( this != &copy )
                         std::exception::operator=( copy );
-                    return *this;    std::exception::operator=(copy);
-
+                    return *this;
                 }
                 virtual ~SpanInvalidException() throw() {};
                 virtual const char* what() const throw() { return ELEC_RED "Span is not valid!" RESET; };

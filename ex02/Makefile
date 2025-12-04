@@ -19,7 +19,7 @@ clean:
 	@rm -f $(OBJ) && echo "\033[31mObjects cleared!\033[0m"
 
 fclean:
-	@rm -f $(NAME) && echo "\033[31mProgram cleared successfully!\033[0m"
+	@rm -f $(NAME) $(OBJ) > /dev/null && echo "\033[31mProgramm cleared successfully!\033[0m"
 
 re: fclean all
 	@echo "\033[36mRunning $(NAME)..."

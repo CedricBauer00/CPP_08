@@ -41,3 +41,4 @@ class MutantStack : public std::stack<T>
             return this->c.end();
         }
 };
+

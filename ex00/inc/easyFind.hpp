@@ -14,7 +14,7 @@
 #define BLUE  "\033[38;5;75m"
 #define GREEN   "\033[32m"
 #define RESET   "\033[0m"
-
+#define RED  "\033[31m"
 
 class NotFoundException : public std::exception
 {
@@ -44,7 +44,7 @@ struct enable_if<true, T> { typedef T type; };
 
 template <typename T>
 
-typename enable_if<is_same<typename T::value_type, int>::value, size_t>::type easyfind( const T &a, const int i )
+typename enable_if<is_same<typename T::value_type, int>::value, size_t>::type easyFind( const T &a, const int i )
 {
     typename T::const_iterator it =  std::find(a.begin(), a.end(), i); //iterator wegen lists oder sets // iterator kein Index
     if ( it != a.end() )

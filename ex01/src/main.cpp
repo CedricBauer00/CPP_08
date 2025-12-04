@@ -41,22 +41,49 @@ int main()
         d.push_back( 1199 );
         d.push_back( 956 );
 
+        std::cout << std::endl;
+
         sp.addNumber( 4 );
         sp.addNumber( 10 );
         sp.addNumber( 2 );
+        
+        std::cout << std::endl;
 
         sp.addMultipleNumbers( l.begin(), l.end() );
         sp.addMultipleNumbers( v.begin(), v.end() );
         sp.addMultipleNumbers( d.begin(), d.end() );
 
-        std::cout << sp << std::endl;
+        std::cout << "\n" << sp << "\n" << std::endl;
         sp.longestSpan();
         sp.shortestSpan();
+
+        std::cout << std::endl;
     }
     catch( Span::AlreadyFullException &e )
     {
         std::cout << ELEC_RED << e.what() << RESET <<  std::endl;
     }
+    try
+    {
+        std::cout << "\n==========Big Span test==========" << std::endl;
+
+        Span big_sp(20000);
+        std::vector<int> big;
+        srand( time( NULL ) ); //randomiser
+        
+        for ( size_t i = 0; i < 18000; i++ )
+        {
+            big.push_back( rand() );
+        }
+        big_sp.addMultipleNumbers( big.begin(), big.end() );
+        big_sp.longestSpan();
+        big_sp.shortestSpan();
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << ELEC_RED << "Cought expected excpetion " << e.what() << std::endl;
+    }
+    
     try
     {
         std::cout << "\n==========Invalid Span test==========" << std::endl;

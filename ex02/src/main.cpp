@@ -39,8 +39,8 @@ int main()
 
     it = mstack.begin();
     ite = mstack.end();
-    ++it;
-    --it;
+    ++it;//warum das
+    --it;//warum das
 
     std::cout << BLUE << "\nOrder: \nIndex:" << RESET << std::endl;
 
@@ -94,8 +94,8 @@ int main()
 
     l_it = mList.begin();
     l_ite = mList.end();
-    ++l_it;
-    --l_it;
+    ++l_it; //warum das
+    --l_it; // warum das
 
     std::cout << BLUE << "\nOrder: \nIndex:" << RESET << std::endl;
 
@@ -110,94 +110,5 @@ int main()
     std::cout << BLUE << "\nBegin is: " << RESET << *mList.begin() << std::endl;
     std::cout << BLUE << "Top is: " << RESET << mList.back() << std::endl;
 
-
     return 0;
 }
-
-//implement cannonical form for exceptoin classes in previous exercise
-// 1000000 fuer span
-
-// #include "../inc/MutantStack.hpp"
-// #include <list>
-// void org_test_more_info( void )
-// {
-//     MutantStack<int> mstack;
-//     mstack.push(5);
-//     mstack.push(17);
-//     std::cout << "\033[38;5;51m.top\033[38;5;49m called -> \033[38;5;51m" << mstack.top() << "\033[0m\n" << std::endl;
-//     mstack.pop();
-//     std::cout << "\033[38;5;51m.size\033[38;5;49m called -> \033[38;5;51m"  << mstack.size() << "\033[0m\n" << std::endl;
-//     mstack.push(3);
-//     mstack.push(5);
-//     mstack.push(737);
-//     MutantStack<int>::iterator it = mstack.begin();
-//     MutantStack<int>::iterator ite = mstack.end();
-//     ++it;
-//     --it;
-//     int i = 1;
-//     while (it != ite) {
-//         std::cout << "\033[38;5;51m" << i << ".\033[38;5;93m index called -> \033[38;5;51m" << *it << "\033[0m" << std::endl;
-//     ++it;
-//     ++i;
-//     }
-//     std::cout << std::endl;
-//     std::stack<int> s(mstack);
-// }
-// void with_list( void ) {
-//     std::list<int> mstack;
-//     mstack.push_back(5);
-//     mstack.push_back(17);
-//     std::cout << "\033[38;5;49m" << mstack.back() << "\033[0m; ";
-//     mstack.pop_back();
-//     std::cout << "\033[38;5;208m" << mstack.size() << "\033[0m; ";
-//     mstack.push_back(3);
-//     mstack.push_back(5);
-//     mstack.push_back(737);
-//     std::cout << "\033[38;5;49m" << mstack.back() << "\033[0m; ";
-//     std::list<int>::iterator it = mstack.begin();
-//     std::list<int>::iterator ite = mstack.end();
-//     ++it;
-//     --it;
-//     while (it != ite) {
-//         if (it != mstack.begin())
-//             std::cout << ", ";
-//         std::cout << "\033[38;5;93m" << *it << "\033[0m";
-//     ++it; }
-//     std::cout << ";" << std::endl;
-// }
-// void mutantstack(  ) {
-//     MutantStack<int> mstack;
-//     mstack.push(5);
-//     mstack.push(17);
-//     std::cout << "\033[38;5;49m" << mstack.top() << "\033[0m; ";
-//     mstack.pop();
-//     std::cout << "\033[38;5;208m" << mstack.size() << "\033[0m; ";
-//     mstack.push(3);
-//     mstack.push(5);
-//     mstack.push(737);
-//     std::cout << "\033[38;5;49m" << mstack.top() << "\033[0m; ";
-//     MutantStack<int>::iterator it = mstack.begin();
-//     MutantStack<int>::iterator ite = mstack.end();
-//     ++it;
-//     --it;
-//     while (it != ite) {
-//         if (it > mstack.begin())
-//             std::cout << ", ";
-//         std::cout << "\033[38;5;93m" << *it << "\033[0m";
-//     ++it; }
-//     std::cout << ";" << std::endl;
-// }
-// int main()
-// {
-//     std::cout << std::endl;
-//     std::cout << "\033[38;5;208mCompare MutantStack with List Test:\033[0m" << std::endl;
-//     std::cout << std::endl;
-//     mutantstack();
-//     with_list();
-//     std::cout << std::endl;
-//     std::cout << "\033[38;5;208mSubject Test:\033[0m" << std::endl;
-//     std::cout << std::endl;
-//     org_test_more_info();
-//     // org_test();
-//     return 0;
-// }

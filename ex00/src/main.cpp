@@ -1,4 +1,4 @@
-#include "../inc/easyfind.hpp"
+#include "../inc/easyFind.hpp"
 
 int main()
 {
@@ -10,7 +10,7 @@ int main()
         v.push_back(20);
         v.push_back(30);
 
-        std::cout << GREEN << "Search 20: " << BLUE << "at index " << easyfind(v, 20) << RESET << std::endl;
+        std::cout << GREEN << "Search 20: " << BLUE << "at index " << easyFind(v, 20) << RESET << std::endl;
     }
     catch ( NotFoundException &e )
     {
@@ -24,7 +24,7 @@ int main()
         l.push_back(29);
         l.push_back(13);
 
-        std::cout << GREEN << "Search 13: " << BLUE << "at index " << easyfind(l, 13) << RESET << std::endl;
+        std::cout << GREEN << "Search 13: " << BLUE << "at index " << easyFind(l, 13) << RESET << std::endl;
     }
     catch ( NotFoundException &e )
     {
@@ -33,13 +33,13 @@ int main()
     try
     {
         std::cout << "\n==========Set test==========" << std::endl;
-        std::set<int> s;        std::cout << "Search 22: " << easyfind(s, 22) << std::endl;
+        std::set<int> s;        std::cout << "Search 22: " << easyFind(s, 22) << std::endl;
 
         s.insert(22);
         s.insert(13);
         s.insert(9);
 
-        std::cout << GREEN << "Search 22: " << BLUE << "at index " << easyfind(s, 22) << RESET << std::endl;
+        std::cout << GREEN << "Search 22: " << BLUE << "at index " << easyFind(s, 22) << RESET << std::endl;
     }
     catch ( NotFoundException &e )
     {
@@ -52,7 +52,7 @@ int main()
         std::cout << "(Sizeof deque : " << d.size() << ")\n(second index value : " << d[1] << ")\n" << std::endl;
         d.push_back(20);
         d.push_back(6);
-        std::cout << GREEN << "Search 6: " << BLUE << "at index " << easyfind(d, 6) << RESET << std::endl;
+        std::cout << GREEN << "Search 6: " << BLUE << "at index " << easyFind(d, 6) << RESET << std::endl;
     }
     catch( NotFoundException &e )
     {
@@ -62,16 +62,16 @@ int main()
     {
         std::cout << "\n==========Invalid test==========" << std::endl;
         std::set<int> s;
-        std::cout << "Search 22: " << easyfind(s, 22) << std::endl;
+        std::cout << "Search 22: " << easyFind(s, 22) << std::endl;
     }
     catch( NotFoundException &e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << RED << e.what() << RESET << std::endl;
     }
     // try
     // {
     //     std::string str = "Hello WOrld";
-    //     std::cout << GREEN << "Search 'H': " << BLUE << "at index " << easyfind(str, 'H') << RESET << std::endl;
+    //     std::cout << GREEN << "Search 'H': " << BLUE << "at index " << easyFind(str, 'H') << RESET << std::endl;
     // }
     // catch( NotFoundException &e)
     // {
