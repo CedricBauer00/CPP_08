@@ -103,15 +103,15 @@ unsigned int    Span::shortestSpan() const
     copy = this->span;
     
     std::sort( copy.begin(), copy.end() );
-    std::cout << "[ ";
-    for ( size_t i = 0; i < copy.size(); ++i )
-    {
-        std::cout << copy[i];
-        if ( i == copy.size() - 1  )
-            break ;
-        std::cout << ", ";
-    }
-    std::cout << " ]" << std::endl;
+    // std::cout << "[ ";
+    // for ( size_t i = 0; i < copy.size(); ++i )
+    // {
+    //     std::cout << copy[i];
+    //     if ( i == copy.size() - 1  )
+    //         break ;
+    //     std::cout << ", ";
+    // }
+    // std::cout << " ]" << std::endl;
 
     unsigned int minSpan;
     minSpan = std::numeric_limits<unsigned int>::max();
