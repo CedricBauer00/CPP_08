@@ -57,12 +57,31 @@ class Span
         class AlreadyFullException : public std::exception
         {
             public:
+                AlreadyFullException() {};
+                AlreadyFullException( const AlreadyFullException &copy ) {};
+                AlreadyFullException& operator=( const AlreadyFullException &copy )
+                {
+                    if ( this != &copy )
+                        std::exception::operator=( copy );
+                    return *this;
+                }
+                virtual ~AlreadyFullException();
                 virtual const char* what() const throw() { return ELEC_RED "Span is already full!" RESET; };
         };
 
         class SpanInvalidException : public std::exception
         {
             public:
+                SpanInvalidException() {};
+                SpanInvalidException( const SpanInvalidException& copy ) {};
+                SpanInvalidException& operator=( const SpanInvalidException& copy )
+                {
+                    if ( this != &copy )
+                        std::exception::operator=( copy );
+                    return *this;    std::exception::operator=(copy);
+
+                }
+                virtual ~SpanInvalidException();
                 virtual const char* what() const throw() { return ELEC_RED "Span is not valid!" RESET; };
         };
 };

@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <stack>
 #include <queue>
+#include <list>
 
 #define RED  "\033[31m"
 #define ELEC_RED "\033[38;2;255;20;20m"
@@ -27,7 +28,7 @@ class MutantStack : public std::stack<T>
                 std::stack<T>::operator=( copy ); // assgin Basecalss
             return *this; 
         }
-        virtual ~MutantStack() { std::cout << "MutantStack destructor!" << std::endl; }
+        virtual ~MutantStack() { std::cout << RED << "MutantStack destructor!" << RESET << std::endl; }
         
         typedef typename std::stack<T>::container_type::iterator iterator;
         iterator begin()
